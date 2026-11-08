@@ -54,6 +54,17 @@ export function mergeCustomerDefaults(partial) {
 
 export function swapFirstTwoItemTitles(order) {
   // TODO: array destructure двух первых title
+
+  const { items } = order;
+
+  if (items.length < 2) {
+    return items[0]?.title ?? "";
+  }
+  const titles = items.map(({ title }) => title);
+
+  const [b, a, ...rest] = titles;
+
+  return `${a} | ${b}`;
 }
 
 function runChecks() {
